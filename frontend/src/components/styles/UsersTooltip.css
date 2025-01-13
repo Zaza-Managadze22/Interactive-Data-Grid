@@ -1,0 +1,13 @@
+.users-tooltip-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+.users-tooltip-list-container .list-item {
+  display: flex;
+  gap: 0.5rem;
+  list-style-type: none;
+  align-items: flex-start;
+}
