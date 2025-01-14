@@ -20,12 +20,14 @@ const MultiUserCellEditor = ({ params }: IProps): JSX.Element => {
   const onClose = () => setIsOpen(false);
 
   const onDone = async () => {
+    // Save the selected users in the internal state of the table
     await params.api.setEditCellValue({
       id: params.id,
       field: params.field,
       value: selectedUsers,
     });
 
+    // Close the editor and enter a view mode again
     params.api.stopCellEditMode({ id: params.id, field: params.field });
 
     setIsOpen(false);

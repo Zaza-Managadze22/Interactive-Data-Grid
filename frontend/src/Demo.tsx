@@ -10,6 +10,7 @@ import TagCell from "./components/Cells/TagsCell";
 import { FetchData, HandleRowUpdate, RecipeWithUser } from "./types";
 
 const Demo = () => {
+  // Define columns for the DataGrid
   const columns: GridColDef[] = [
     { field: "id", headerName: "ID", width: 70 },
     { field: "name", headerName: "Name", width: 200, editable: true },
@@ -54,6 +55,7 @@ const Demo = () => {
     },
   ];
 
+  // Fetch data for the DataGrid
   const fetchData: FetchData<RecipeWithUser> = async ({
     page,
     pageSize,
@@ -62,6 +64,7 @@ const Demo = () => {
     return res.data;
   };
 
+  // Handle row updates
   const handleRowUpdate: HandleRowUpdate<RecipeWithUser> = async (
     updatedRow
   ) => {
