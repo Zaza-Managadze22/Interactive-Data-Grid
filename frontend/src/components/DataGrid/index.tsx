@@ -9,17 +9,20 @@ import useTableData from "../../hooks/useTableRows";
 import { FetchData, HandleRowUpdate } from "../../types";
 import "../styles/DataGrid.css";
 
+// Define the props interface with generic type T
 interface IProps<T extends GridValidRowModel> {
   columns: GridColDef[];
   fetchData: FetchData<T>;
   handleRowUpdate?: HandleRowUpdate<T>;
 }
 
+// Main DataGrid component
 const DataGridComponent = <T extends GridValidRowModel>({
   columns,
   fetchData,
   handleRowUpdate,
 }: IProps<T>): JSX.Element => {
+  // Use custom hook to fetch table data
   const {
     data,
     rowCount,
@@ -31,8 +34,10 @@ const DataGridComponent = <T extends GridValidRowModel>({
     setPaginationModel,
   } = useTableData(fetchData);
 
+  // Define page size options
   const pageSizeOptions = useMemo(() => [10, 20, 30], []);
 
+  // Handle row update process
   const processRowUpdate = useCallback(
     async (updatedRow: T, originalRow: T) => {
       if (handleRowUpdate) {
@@ -70,6 +75,7 @@ const DataGridComponent = <T extends GridValidRowModel>({
   );
 };
 
+// Memoize the DataGrid component to prevent unnecessary re-renders
 const typedMemo: <T>(component: T) => T = memo;
 
 const DataGrid = typedMemo<typeof DataGridComponent>(DataGridComponent);

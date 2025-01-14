@@ -52,6 +52,7 @@ const Demo = () => {
       renderCell: (params) => <MultiUserCellRenderer users={params.value} />,
       renderEditCell: (params) => <MultiUserCellEditor params={params} />,
       editable: true,
+      sortable: false,
     },
   ];
 
