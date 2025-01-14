@@ -2,7 +2,7 @@
 
 ## Project Outline
 
-The Interactive Data Grid project is a full-stack application that provides a dynamic and interactive data grid interface. The project consists of an Express Node.js backend with a SQLite database and a React frontend. The backend handles API requests and database interactions, while the frontend provides a user-friendly interface for interacting with the data grid.
+The Interactive Data Grid project is a full-stack application that provides a dynamic and interactive pluggable data grid interface. The project consists of an Express Node.js backend with a SQLite database and a React frontend. The backend handles API requests and database interactions, while the frontend provides a user-friendly interface for interacting with the data grid.
 
 ## Architecture
 
@@ -24,7 +24,7 @@ The frontend is built using React, a popular JavaScript library for building use
 - **React**: A JavaScript library for building user interfaces, allowing developers to create reusable UI components.
 - **Material-UI**: A popular React UI framework that provides a set of pre-designed components, ensuring a consistent and visually appealing design.
 - **Axios**: A promise-based HTTP client for making API requests from the frontend to the backend.
-- **Data Grid**: The core component of the frontend, providing an interactive and dynamic interface for displaying and manipulating data. The data grid supports features such as pagination, sorting, filtering, and inline editing.
+- **Data Grid**: The core component of the frontend, providing an interactive and dynamic interface for displaying and manipulating data. The data grid supports features such as pagination, sorting, filtering, and inline editing. It follows a pluggable component architecture, using TypeScript to define contracts and allowing for dynamic cell renderer and editor registration for custom cells by passing in the column configuration object. Several custom cells (including the multiple user select cell) are provided and plugged in the demo app. The data grid component falls back to default cell editors and renderers unless custom editors and renderers are registered. It also allows for static columns that are not editable.
 
 ### Interaction Between Backend and Frontend
 
