@@ -1,6 +1,6 @@
 import { Avatar } from "@mui/material";
 import { User } from "../../types";
-import UsersTooltip from "./UsersTooltip";
+import UsersTooltip from "../UsersTooltip";
 import "../styles/MultiUserCellRenderer.css";
 
 interface IProps {

@@ -8,7 +8,7 @@ import {
 import { GridRenderEditCellParams } from "@mui/x-data-grid";
 import { useState } from "react";
 import { User } from "../../types";
-import UserAutocomplete from "./UserAutocomplete";
+import UserAutocomplete from "../UserAutocomplete";
 
 interface IProps {
   params: GridRenderEditCellParams;

@@ -4,7 +4,7 @@ import {
   GridValidRowModel,
   DataGrid as MuiDataGrid,
 } from "@mui/x-data-grid";
-import { useMemo, memo } from "react";
+import { useMemo, memo, useCallback } from "react";
 import useTableData from "../../hooks/useTableRows";
 import { FetchData, HandleRowUpdate } from "../../types";
 import "../styles/DataGrid.css";
@@ -33,6 +33,22 @@ const DataGridComponent = <T extends GridValidRowModel>({
 
   const pageSizeOptions = useMemo(() => [10, 20, 30], []);
 
+  const processRowUpdate = useCallback(
+    async (updatedRow: T, originalRow: T) => {
+      if (handleRowUpdate) {
+        try {
+          const updatedData = await handleRowUpdate(updatedRow);
+          return updatedData;
+        } catch (error) {
+          setError(`Could not load users: ${(error as Error).message}`);
+          return originalRow; // Revert to the original row if update fails
+        }
+      }
+      return originalRow;
+    },
+    [handleRowUpdate, setError]
+  );
+
   return (
     <div className="grid-container">
       <MuiDataGrid
@@ -45,20 +61,7 @@ const DataGridComponent = <T extends GridValidRowModel>({
         paginationMode="server"
         onPaginationModelChange={setPaginationModel}
         onRowCountChange={setRowCount}
-        processRowUpdate={
-          handleRowUpdate
-            ? async (updatedRow: T, originalRow: T) => {
-                try {
-                  const updatedData = await handleRowUpdate(updatedRow);
-                  console.log(updatedData);
-                  return updatedData;
-                } catch (error) {
-                  setError(`Could not load users: ${(error as Error).message}`);
-                  return originalRow; // Revert to the original row if update fails
-                }
-              }
-            : undefined
-        }
+        processRowUpdate={processRowUpdate}
       />
       {!!errorMessage && (
         <Alert severity="error">Could not load users: {errorMessage}</Alert>

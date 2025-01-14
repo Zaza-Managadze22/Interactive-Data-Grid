@@ -2,11 +2,11 @@ import { GridColDef, GridPaginationModel } from "@mui/x-data-grid";
 import api from "./api";
 import "./App.css";
 import DataGrid from "./components/DataGrid";
-import ImageLinkCell from "./components/DataGrid/ImageCell";
-import ListCell from "./components/DataGrid/ListCell";
-import MultiUserCellEditor from "./components/DataGrid/MultiUserCellEditor";
-import MultiUserCellRenderer from "./components/DataGrid/MultiUserCellRenderer";
-import TagCell from "./components/DataGrid/TagsCell";
+import ImageLinkCell from "./components/Cells/ImageCell";
+import ListCell from "./components/Cells/ListCell";
+import MultiUserCellEditor from "./components/Cells/MultiUserCellEditor";
+import MultiUserCellRenderer from "./components/Cells/MultiUserCellRenderer";
+import TagCell from "./components/Cells/TagsCell";
 import { FetchData, HandleRowUpdate, RecipeWithUser } from "./types";
 
 const Demo = () => {

@@ -1,7 +1,7 @@
 import { Avatar, Chip, Popover } from "@mui/material";
 import { useState } from "react";
-import { User } from "../../types";
-import "../styles/UsersTooltip.css";
+import { User } from "../types";
+import "./styles/UsersTooltip.css";
 
 interface IProps {
   users: User[];
