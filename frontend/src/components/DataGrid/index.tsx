@@ -5,7 +5,7 @@ import {
   DataGrid as MuiDataGrid,
 } from "@mui/x-data-grid";
 import { useMemo, memo, useCallback } from "react";
-import useTableData from "../../hooks/useTableRows";
+import useTableData from "../../hooks/useTableData";
 import { FetchData, HandleRowUpdate } from "../../types";
 import "../styles/DataGrid.css";
 
